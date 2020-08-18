@@ -93,14 +93,14 @@ public class SwiftEsysFlutterSharePlugin: NSObject, FlutterPlugin {
             if let image = UIImage(contentsOfFile: contentUri!.path) {
                 
                 if(mimeType.lowercased() == "image/png" ) {
-                    if let imagepng = UIImagePNGRepresentation(image)
+                    if let imagepng = image.pngData()
                     {
                         let imageData1: Data = imagepng
                         return imageData1
                     }
                 }
                 else if(mimeType.lowercased() == "image/jpg" ) {
-                    if let imagepng = UIImageJPEGRepresentation(image, 1)
+                    if let imagepng = image.jpegData(compressionQuality: 1)
                     {
                         let imageData1: Data = imagepng
                         return imageData1
